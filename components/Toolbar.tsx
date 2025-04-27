@@ -41,6 +41,7 @@ export default function Toolbar({
   const [showColorPicker, setShowColorPicker] = useState(false);
 
   const tools = [
+    { id: 'select', icon: '↖️', tooltip: 'Select & Resize' },
     { id: 'pen', icon: '✏️', tooltip: 'Pen' },
     { id: 'eraser', icon: '🧽', tooltip: 'Eraser' },
     { id: 'line', icon: '━', tooltip: 'Line' },
@@ -107,20 +108,22 @@ export default function Toolbar({
 
         <div className="w-full h-px bg-gray-700 my-1" />
 
-        {/* Cursor size */}
-        <div className="flex flex-col items-center space-y-2">
-          <span className="text-xs text-gray-400">Size</span>
-          <input
-            type="range"
-            min="1"
-            max="20"
-            value={cursorSize}
-            onChange={(e) => setCursorSize(parseInt(e.target.value))}
-            className="w-full accent-blue-500"
-            title="Brush Size"
-          />
-          <span className="text-xs text-gray-300">{cursorSize}px</span>
-        </div>
+        {/* Cursor size - hide for select tool */}
+        {tool !== 'select' && (
+          <div className="flex flex-col items-center space-y-2">
+            <span className="text-xs text-gray-400">Size</span>
+            <input
+              type="range"
+              min="1"
+              max="20"
+              value={cursorSize}
+              onChange={(e) => setCursorSize(parseInt(e.target.value))}
+              className="w-full accent-blue-500"
+              title="Brush Size"
+            />
+            <span className="text-xs text-gray-300">{cursorSize}px</span>
+          </div>
+        )}
       </div>
 
       {/* Secondary toolbar for actions */}

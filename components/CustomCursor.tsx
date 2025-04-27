@@ -12,6 +12,35 @@ export default function CustomCursor({ position, tool, color, size }: Props) {
   
   const getCursorJSX = () => {
     switch (tool) {
+      case 'select':
+        return (
+          <div className="absolute pointer-events-none" style={{ left: x, top: y }}>
+            <div 
+              className="absolute transform -translate-x-1/2 -translate-y-1/2"
+              style={{ width: '20px', height: '20px' }}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path 
+                  d="M4 4L12 12M4 4V10M4 4H10" 
+                  stroke="white" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                />
+                <rect
+                  x="10"
+                  y="10"
+                  width="6"
+                  height="6"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  fill="rgba(79, 144, 242, 0.5)"
+                />
+              </svg>
+            </div>
+          </div>
+        );
+      
       case 'pen':
         return (
           <div 
