@@ -14,3 +14,16 @@ export type WhiteboardData = {
   objects: any;
   pages: WhiteboardPage[];
 };
+
+export type Whiteboard = {
+  id: string; // unique id for the whiteboard
+  title: string; // title of the whiteboard
+  data: WhiteboardData; // data of the whiteboard
+  createdAt: Date; // creation date of the whiteboard
+  updatedAt: Date; // last updated date of the whiteboard
+};
+
+
+
+
+
